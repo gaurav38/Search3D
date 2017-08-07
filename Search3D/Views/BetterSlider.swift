@@ -1,5 +1,5 @@
 //
-//  BetterTextField.swift
+//  BetterSlider.swift
 //  Search3D
 //
 //  Created by Gaurav Saraf on 8/3/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BetterTextField: UITextField {
+class BetterSlider: UIView {
 
     /*
     // Only override draw() if you perform custom drawing.
