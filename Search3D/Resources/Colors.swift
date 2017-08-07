@@ -7,3 +7,9 @@
 //
 
 import Foundation
+import UIKit
+
+class Colors {
+    static let currentPageTintColor: UIColor = UIColor(red: CGFloat(150)/255.0, green: CGFloat(40)/255.0, blue: CGFloat(27)/255.0, alpha: 1.0)
+    static let pageTintColor: UIColor = UIColor.lightGray
+}

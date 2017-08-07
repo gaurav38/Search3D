@@ -7,3 +7,22 @@
 //
 
 import Foundation
+
+class SearchHistoryViewModel: SearchHistoryViewModelProtocol {
+    
+    var history: [Printer]? {
+        didSet {
+            self.historyDidChange?(self)
+        }
+    }
+    
+    var historyDidChange: ((SearchHistoryViewModelProtocol) -> ())?
+    
+    required init() {
+        
+    }
+    
+    func loadHistory() {
+        history = [Printer]()
+    }
+}

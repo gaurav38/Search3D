@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+enum UserLevel: String {
+    case Beginner
+    case Professional
+    case Designer
+    case Medical
+}

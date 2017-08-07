@@ -1,14 +1,41 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ujy-sG-wUV">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="qo3-7u-8Ch">
+            <objects>
+                <navigationController modalTransitionStyle="crossDissolve" id="Ujy-sG-wUV" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="g9e-Wp-Ynz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.58823529409999997" green="0.15686274510000001" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="7Cg-GB-Fba"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C9i-32-ZPQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1495" y="40"/>
+        </scene>
+        <!--Search 3D-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SearchHistoryViewController" customModule="Search3D" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +43,300 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kUA-tf-xZZ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HistoryTableViewCell" id="e62-0q-pe1">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e62-0q-pe1" id="Db3-0v-cXd">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yfq-E6-epo">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="xLK-3y-iTe" userLabel="EmptyHistoryStackView">
+                                        <rect key="frame" x="51.5" y="169.5" width="272" height="264"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EmptyHistoryImage" translatesAutoresizingMaskIntoConstraints="NO" id="Wws-wj-SIe">
+                                                <rect key="frame" x="0.0" y="0.0" width="272" height="163"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JlP-dA-fZ4">
+                                                <rect key="frame" x="0.0" y="213" width="272" height="51"/>
+                                                <color key="backgroundColor" red="0.38431372549019605" green="0.10196078431372549" blue="0.074509803921568626" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                <inset key="contentEdgeInsets" minX="0.0" minY="15" maxX="0.0" maxY="15"/>
+                                                <state key="normal" title="START SEARCHING!">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="kMI-DW-331" kind="show" id="SvY-5d-cyA"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="xLK-3y-iTe" firstAttribute="centerX" secondItem="yfq-E6-epo" secondAttribute="centerX" id="bi3-b5-uMj"/>
+                                    <constraint firstItem="xLK-3y-iTe" firstAttribute="centerY" secondItem="yfq-E6-epo" secondAttribute="centerY" id="fuP-Fq-CTr"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="yfq-E6-epo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8CV-mF-P4l"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="yfq-E6-epo" secondAttribute="bottom" id="Fed-UP-aeI"/>
+                            <constraint firstItem="kUA-tf-xZZ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="YJN-02-2TZ"/>
+                            <constraint firstAttribute="trailing" secondItem="yfq-E6-epo" secondAttribute="trailing" id="ala-ik-iFc"/>
+                            <constraint firstItem="kUA-tf-xZZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dzm-XQ-pNg"/>
+                            <constraint firstItem="yfq-E6-epo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="tTi-s7-ofc"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="kUA-tf-xZZ" secondAttribute="bottom" id="vHV-oF-AmQ"/>
+                            <constraint firstAttribute="trailing" secondItem="kUA-tf-xZZ" secondAttribute="trailing" id="z8d-dg-Nzg"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Search 3D" id="cvX-kf-BEV"/>
+                    <connections>
+                        <outlet property="emptyHistoryView" destination="yfq-E6-epo" id="bpZ-uj-7BN"/>
+                        <outlet property="historyTableView" destination="kUA-tf-xZZ" id="WGt-b7-Iqr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-670" y="37"/>
+        </scene>
+        <!--Search Form View Controller-->
+        <scene sceneID="CPj-QA-MUc">
+            <objects>
+                <pageViewController storyboardIdentifier="SearchFormViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="kMI-DW-331" customClass="SearchFormViewController" customModule="Search3D" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FsM-R5-Kff" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="174" y="36"/>
+        </scene>
+        <!--UserLevelViewController-->
+        <scene sceneID="PU0-yF-53t">
+            <objects>
+                <viewController storyboardIdentifier="UserLevelDetailsViewController" title="UserLevelViewController" id="klK-fv-UKr" customClass="UserLevelDetailsViewController" customModule="Search3D" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="e6e-Q6-i7Q"/>
+                        <viewControllerLayoutGuide type="bottom" id="9JP-t4-jXB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="20b-6Z-UaJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="FzD-am-i2n">
+                                <rect key="frame" x="37.5" y="290.5" width="300" height="87.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1x1-Ty-yCI" userLabel="User Level">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eM1-AB-cj6" customClass="BetterTextField" customModule="Search3D" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="43.5" width="300" height="44"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" keyboardAppearance="light"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderThickness">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.58823529409999997" green="0.15686274510000001" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="p19-aA-Nz9"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="FzD-am-i2n" firstAttribute="centerY" secondItem="20b-6Z-UaJ" secondAttribute="centerY" id="6Ss-ie-J8f"/>
+                            <constraint firstItem="FzD-am-i2n" firstAttribute="centerX" secondItem="20b-6Z-UaJ" secondAttribute="centerX" id="lpa-dk-hld"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="userLevelTextField" destination="eM1-AB-cj6" id="0GN-SG-4wb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yNg-Hu-osK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-311" y="688"/>
+        </scene>
+        <!--DimensionsViewController-->
+        <scene sceneID="LYd-tO-Uvm">
+            <objects>
+                <viewController storyboardIdentifier="DimensionsDetailsViewController" title="DimensionsViewController" id="vxM-uR-WPE" customClass="DimensionsDetailsViewController" customModule="Search3D" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="61B-tA-Lca"/>
+                        <viewControllerLayoutGuide type="bottom" id="y5O-x1-VWJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4h3-Fa-Rxa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="diU-08-6t7">
+                                <rect key="frame" x="20" y="121.5" width="335" height="424"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YIS-wf-tTV" userLabel="Length" customClass="BetterSlider" customModule="Search3D" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="128"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="labelText" value="Length"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wAJ-bv-apJ" userLabel="Width" customClass="BetterSlider" customModule="Search3D" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="148" width="335" height="128"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="labelText" value="Width"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bzp-tA-btg" userLabel="Height" customClass="BetterSlider" customModule="Search3D" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="296" width="335" height="128"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="labelText" value="Height"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="diU-08-6t7" firstAttribute="centerY" secondItem="4h3-Fa-Rxa" secondAttribute="centerY" id="0WQ-hM-NbX"/>
+                            <constraint firstItem="diU-08-6t7" firstAttribute="leading" secondItem="4h3-Fa-Rxa" secondAttribute="leading" constant="20" id="RVt-PE-g2D"/>
+                            <constraint firstAttribute="trailing" secondItem="diU-08-6t7" secondAttribute="trailing" constant="20" id="jZo-NC-EPa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="LengthSlider" destination="YIS-wf-tTV" id="fZg-V7-MwY"/>
+                        <outlet property="heightSlider" destination="Bzp-tA-btg" id="gXU-2C-wdg"/>
+                        <outlet property="lengthSlider" destination="YIS-wf-tTV" id="KF4-pm-xyt"/>
+                        <outlet property="widthSlider" destination="wAJ-bv-apJ" id="vmH-u5-cal"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HeA-rg-LuM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="422" y="684"/>
+        </scene>
+        <!--MaterialsViewController-->
+        <scene sceneID="ojx-kz-bQe">
+            <objects>
+                <viewController storyboardIdentifier="MaterialDetailsViewController" title="MaterialsViewController" id="AAY-eu-oGT" customClass="MaterialDetailsViewController" customModule="Search3D" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aBg-Mv-GWC"/>
+                        <viewControllerLayoutGuide type="bottom" id="dz5-9Q-TQ3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PC4-Jh-4SB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NJ6-1N-xbc">
+                                <rect key="frame" x="20" y="123" width="335" height="421.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="EzV-w1-xMk">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="80.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Material Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="weL-ei-L6R">
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="23.5"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XZB-QW-YT7" customClass="BetterTextField" customModule="Search3D" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="36.5" width="335" height="44"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.58823529409999997" green="0.15686274510000001" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderThickness">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" tag="20" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yvt-RI-TKU">
+                                        <rect key="frame" x="0.0" y="100.5" width="335" height="25"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Multi-color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="64R-Kw-EJ1">
+                                                <rect key="frame" x="0.0" y="0.0" width="96.5" height="25"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eQJ-Sd-r6f">
+                                                <rect key="frame" x="116.5" y="0.0" width="218.5" height="25"/>
+                                                <state key="normal" title="Button" image="UnChecked"/>
+                                                <connections>
+                                                    <action selector="multiColorButtonClicked:" destination="AAY-eu-oGT" eventType="touchUpInside" id="9Lb-FZ-xPX"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gu-kg-pZU" customClass="BetterSlider" customModule="Search3D" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="145.5" width="335" height="128"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="labelText" value="Resolution"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cU1-Cv-vkk" customClass="BetterSlider" customModule="Search3D" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="293.5" width="335" height="128"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="labelText" value="Part Cost"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0J-AU-uJT">
+                                <rect key="frame" x="36" y="593" width="303" height="54"/>
+                                <color key="backgroundColor" red="0.38431372549999998" green="0.1019607843" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="15" maxX="0.0" maxY="15"/>
+                                <state key="normal" title="SEARCH">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="O0J-AU-uJT" firstAttribute="leading" secondItem="PC4-Jh-4SB" secondAttribute="leadingMargin" constant="20" id="8P0-XT-Dag"/>
+                            <constraint firstItem="NJ6-1N-xbc" firstAttribute="centerY" secondItem="PC4-Jh-4SB" secondAttribute="centerY" id="EeT-Zs-OFS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="O0J-AU-uJT" secondAttribute="trailing" constant="20" id="JPr-Mo-GJP"/>
+                            <constraint firstItem="NJ6-1N-xbc" firstAttribute="leading" secondItem="PC4-Jh-4SB" secondAttribute="leading" constant="20" id="SRP-De-roH"/>
+                            <constraint firstItem="dz5-9Q-TQ3" firstAttribute="top" secondItem="O0J-AU-uJT" secondAttribute="bottom" constant="20" id="Wkh-nA-F0n"/>
+                            <constraint firstItem="O0J-AU-uJT" firstAttribute="centerX" secondItem="PC4-Jh-4SB" secondAttribute="centerX" id="lVL-SE-JdL"/>
+                            <constraint firstAttribute="trailing" secondItem="NJ6-1N-xbc" secondAttribute="trailing" constant="20" id="vyA-am-eMo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="multiColorButton" destination="eQJ-Sd-r6f" id="37A-I0-wdD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R2Q-KW-8mf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1127" y="685"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="EmptyHistoryImage" width="272" height="163"/>
+        <image name="UnChecked" width="25" height="25"/>
+    </resources>
 </document>

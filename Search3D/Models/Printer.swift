@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+class Printer {
+    var name: String!
+    var userLevel: UserLevel!
+    var length: Float!
+    var width: Float!
+    var height: Float!
+    var material: String!
+    var isMultiColor: Bool!
+    var resolution: Double!
+    var partCost: Float!
+    var url: String!
+}

@@ -10,6 +10,9 @@ import UIKit
 
 class MaterialDetailsViewController: UIViewController {
 
+    @IBOutlet weak var multiColorButton: UIButton!
+    private var multiColor: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +24,18 @@ class MaterialDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    @IBAction func multiColorButtonClicked(_ sender: Any) {
+        if multiColor {
+            multiColorButton.setImage(#imageLiteral(resourceName: "UnChecked"), for: UIControlState.normal)
+        } else {
+            multiColorButton.setImage(#imageLiteral(resourceName: "Checked"), for: UIControlState.normal)
+        }
+        multiColor = !multiColor
+    }
 
     /*
     // MARK: - Navigation

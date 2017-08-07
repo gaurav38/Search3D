@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+protocol SearchHistoryViewModelProtocol: class {
+    var history: [Printer]? { get }
+    var historyDidChange: ((SearchHistoryViewModelProtocol) -> ())? { get set }
+    init()
+    func loadHistory()
+}
