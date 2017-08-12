@@ -22,22 +22,22 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="132"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="786-uL-7qc">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="786-uL-7qc">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="132"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zP4-KB-VhC" userLabel="ValueStackView">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="41"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16o-Xx-WdH">
-                                    <rect key="frame" x="0.0" y="0.0" width="49" height="41"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="42" height="50"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3rv-Pw-ZYd" customClass="BetterTextField" customModule="Search3D" customModuleProvider="target">
-                                    <rect key="frame" x="59" y="0.0" width="316" height="41"/>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3rv-Pw-ZYd" customClass="BetterTextField" customModule="Search3D" customModuleProvider="target">
+                                    <rect key="frame" x="52" y="0.0" width="323" height="50"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="borderThickness">
@@ -46,15 +46,41 @@
                                     </userDefinedRuntimeAttributes>
                                 </textField>
                             </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="cET-VY-APs"/>
+                            </constraints>
                         </stackView>
-                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="0TJ-aI-a4h" userLabel="Slider">
-                            <rect key="frame" x="-2" y="41" width="379" height="92"/>
-                            <color key="tintColor" red="0.58823529409999997" green="0.15686274510000001" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
-                            <color key="thumbTintColor" red="0.58823529409999997" green="0.15686274510000001" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="sliderChanged:" destination="-1" eventType="valueChanged" id="o8N-S9-cDZ"/>
-                            </connections>
-                        </slider>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="XiG-fy-APr">
+                            <rect key="frame" x="0.0" y="50" width="375" height="82"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AkT-qD-bfk">
+                                    <rect key="frame" x="0.0" y="0.0" width="10" height="82"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="10" id="TrY-0G-EAk"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="0TJ-aI-a4h" userLabel="Slider">
+                                    <rect key="frame" x="28" y="0.0" width="299" height="83"/>
+                                    <color key="tintColor" red="0.58823529409999997" green="0.15686274510000001" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="thumbTintColor" red="0.58823529409999997" green="0.15686274510000001" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                    <connections>
+                                        <action selector="sliderChanged:" destination="-1" eventType="valueChanged" id="o8N-S9-cDZ"/>
+                                    </connections>
+                                </slider>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUB-q0-eb5">
+                                    <rect key="frame" x="345" y="0.0" width="30" height="82"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="30" id="388-ny-Nb1"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
                     </subviews>
                 </stackView>
             </subviews>

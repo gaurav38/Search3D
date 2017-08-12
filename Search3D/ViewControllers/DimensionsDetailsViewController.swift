@@ -14,6 +14,8 @@ class DimensionsDetailsViewController: UIViewController {
     @IBOutlet weak var widthSlider: BetterSlider!
     @IBOutlet weak var heightSlider: BetterSlider!
     
+    public var viewModel: SearchViewModelProtocol!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,13 +32,16 @@ class DimensionsDetailsViewController: UIViewController {
     
     func lengthChanged() {
         print(lengthSlider.sliderValue.format(f: ".2"))
+        viewModel.length = lengthSlider.sliderValue
     }
     
     func widthChanged() {
         print(widthSlider.sliderValue.format(f: ".2"))
+        viewModel.width = widthSlider.sliderValue
     }
     
     func heightChanged() {
         print(heightSlider.sliderValue.format(f: ".2"))
+        viewModel.height = heightSlider.sliderValue
     }
 }

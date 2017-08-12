@@ -18,6 +18,8 @@
 		C6D343CA1F33F2F20023C03D /* BetterSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D343C91F33F2F20023C03D /* BetterSlider.swift */; };
 		C6D343CC1F3609F50023C03D /* SearchViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D343CB1F3609F50023C03D /* SearchViewModelProtocol.swift */; };
 		C6D343CE1F360B5E0023C03D /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D343CD1F360B5E0023C03D /* SearchViewModel.swift */; };
+		C6D343D01F3F572D0023C03D /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D343CF1F3F572D0023C03D /* SearchResultsViewController.swift */; };
+		C6D343D21F3F58230023C03D /* PrinterResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D343D11F3F58230023C03D /* PrinterResources.swift */; };
 		C6E8098E1F23C59500159334 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E8098D1F23C59500159334 /* AppDelegate.swift */; };
 		C6E809901F23C59500159334 /* SearchHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E8098F1F23C59500159334 /* SearchHistoryViewController.swift */; };
 		C6E809931F23C59500159334 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6E809911F23C59500159334 /* Main.storyboard */; };
@@ -44,6 +46,8 @@
 		C6D343C91F33F2F20023C03D /* BetterSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetterSlider.swift; sourceTree = "<group>"; };
 		C6D343CB1F3609F50023C03D /* SearchViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModelProtocol.swift; sourceTree = "<group>"; };
 		C6D343CD1F360B5E0023C03D /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		C6D343CF1F3F572D0023C03D /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		C6D343D11F3F58230023C03D /* PrinterResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterResources.swift; sourceTree = "<group>"; };
 		C6E8098A1F23C59500159334 /* Search3D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Search3D.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E8098D1F23C59500159334 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6E8098F1F23C59500159334 /* SearchHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchHistoryViewController.swift; path = ../SearchHistoryViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				C64F1B041F31620600C537B7 /* Colors.swift */,
+				C6D343D11F3F58230023C03D /* PrinterResources.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -137,6 +142,7 @@
 				C64F1AFD1F31501700C537B7 /* UserLevelDetailsViewController.swift */,
 				C64F1AFF1F31503600C537B7 /* DimensionsDetailsViewController.swift */,
 				C64F1B011F31504B00C537B7 /* MaterialDetailsViewController.swift */,
+				C6D343CF1F3F572D0023C03D /* SearchResultsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -253,9 +259,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Search3D/Pods-Search3D-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CLTokenInputView/CLTokenInputView.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
+				"${BUILT_PRODUCTS_DIR}/SwinjectStoryboard/SwinjectStoryboard.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CLTokenInputView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwinjectStoryboard.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -283,13 +298,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Search3D-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -308,7 +326,9 @@
 				C6D343CE1F360B5E0023C03D /* SearchViewModel.swift in Sources */,
 				C6E809901F23C59500159334 /* SearchHistoryViewController.swift in Sources */,
 				C64F1AFE1F31501700C537B7 /* UserLevelDetailsViewController.swift in Sources */,
+				C6D343D01F3F572D0023C03D /* SearchResultsViewController.swift in Sources */,
 				C64F1AFC1F314EE000C537B7 /* SearchFormViewController.swift in Sources */,
+				C6D343D21F3F58230023C03D /* PrinterResources.swift in Sources */,
 				C6E809AC1F29647500159334 /* UserLevel.swift in Sources */,
 				C6E8098E1F23C59500159334 /* AppDelegate.swift in Sources */,
 				C6E809A51F2951E600159334 /* SearchHistoryViewModel.swift in Sources */,

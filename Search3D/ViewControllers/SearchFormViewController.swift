@@ -11,9 +11,40 @@ import UIKit
 
 class SearchFormViewController: UIPageViewController {
     
+    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    private(set) var userLevelDetailsViewController: UserLevelDetailsViewController!
+    private(set) var dimensionsViewController: DimensionsDetailsViewController!
+    private(set) var materialsViewController: MaterialDetailsViewController!
+    
+    fileprivate var orderedViewControllers: [UIViewController]!
+    fileprivate var viewModel: SearchViewModel! {
+        didSet {
+            userLevelDetailsViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "UserLevelDetailsViewController") as! UserLevelDetailsViewController
+            userLevelDetailsViewController.viewModel = viewModel
+            dimensionsViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DimensionsDetailsViewController") as! DimensionsDetailsViewController
+            dimensionsViewController.viewModel = viewModel
+            materialsViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MaterialDetailsViewController") as! MaterialDetailsViewController
+            materialsViewController.viewModel = viewModel
+            orderedViewControllers = [userLevelDetailsViewController, dimensionsViewController, materialsViewController]
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel = appDelegate.container.resolve(SearchViewModelProtocol.self) as! SearchViewModel
+        configureView()
+        
+        if let firstViewController = orderedViewControllers?.first {
+            setViewControllers([firstViewController],
+                               direction: .forward,
+                               animated: true,
+                               completion: nil)
+        }
+        dataSource = self
+    }
+    
+    private func configureView() {
         view.backgroundColor = .white
         let pageControl = UIPageControl.appearance(whenContainedInInstancesOf: [SearchFormViewController.self])
         pageControl.pageIndicatorTintColor = Colors.pageTintColor
@@ -24,21 +55,7 @@ class SearchFormViewController: UIPageViewController {
                 (view as? UIScrollView)?.delaysContentTouches = false
             }
         }
-        
-        if let firstViewController = orderedViewControllers.first {
-            setViewControllers([firstViewController],
-                               direction: .forward,
-                               animated: true,
-                               completion: nil)
-        }
-        dataSource = self
     }
-    
-    private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return [UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "UserLevelDetailsViewController"),
-                UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DimensionsDetailsViewController"),
-                UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MaterialDetailsViewController")]
-    }()
 }
 
 // MARK: UIPageViewControllerDataSource

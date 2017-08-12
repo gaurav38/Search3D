@@ -10,12 +10,14 @@ import UIKit
 
 class SearchHistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     @IBOutlet weak var historyTableView: UITableView!
     @IBOutlet weak var emptyHistoryView: UIView!
     
-    var viewModel: SearchHistoryViewModelProtocol! {
+    var viewModel: SearchHistoryViewModelProtocol? {
         didSet {
-            self.viewModel.historyDidChange = { [unowned self] viewModel in
+            self.viewModel?.historyDidChange = { [unowned self] viewModel in
                 self.refreshView()
                 self.refreshTableView()
             }
@@ -28,19 +30,13 @@ class SearchHistoryViewController: UIViewController, UITableViewDelegate, UITabl
         emptyHistoryView.isHidden = true
         
         historyTableView.dataSource = self
-        viewModel = SearchHistoryViewModel()
-        viewModel.loadHistory()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        viewModel = appDelegate.container.resolve(SearchHistoryViewModelProtocol.self)
+        viewModel?.loadHistory()
     }
     
     func refreshView()
     {
-        if viewModel.history?.count == 0 {
+        if viewModel?.history?.count == 0 {
             emptyHistoryView.isHidden = false
         } else {
             refreshTableView()
@@ -54,7 +50,7 @@ class SearchHistoryViewController: UIViewController, UITableViewDelegate, UITabl
     // Mark: Table View
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.history?.count ?? 0
+        return viewModel?.history?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

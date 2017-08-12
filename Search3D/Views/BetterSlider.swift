@@ -23,6 +23,12 @@ import UIKit
         }
     }
     
+    @IBInspectable var initialValue: Float = 0.0 {
+        didSet {
+            slider.value = initialValue
+        }
+    }
+    
     private(set) var sliderValue: Float = 0.0
     
     // MARK: Initializers

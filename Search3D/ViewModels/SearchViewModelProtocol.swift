@@ -16,7 +16,7 @@ protocol SearchViewModelProtocol: class {
     var multiColor: Bool { get set }
     var resolution: Int { get set }
     var partCost: Float { get set }
-    var material: String { get set }
+    var material: [String] { get set }
     
     init()
     func executeSearch()

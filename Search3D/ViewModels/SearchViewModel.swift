@@ -13,7 +13,7 @@ class SearchViewModel: SearchViewModelProtocol {
     var length: Float = 0.00
     var width: Float = 0.0
     var height: Float = 0.0
-    var material: String = "multi-material"
+    var material: [String] = [String]()
     var multiColor: Bool = false
     var resolution: Int = 100
     var partCost: Float = 0.00

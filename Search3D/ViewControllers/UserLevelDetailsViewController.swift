@@ -11,6 +11,9 @@ import UIKit
 class UserLevelDetailsViewController: UIViewController {
 
     @IBOutlet weak var userLevelTextField: UITextField!
+    
+    public var viewModel: SearchViewModelProtocol!
+    
     var userLevelPicker: UIPickerView!
     let userLevels: [String] = [UserLevel.Beginner.rawValue,
                                 UserLevel.Designer.rawValue,
@@ -54,5 +57,6 @@ extension UserLevelDetailsViewController: UIPickerViewDelegate, UIPickerViewData
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         userLevelTextField.text = userLevels[row]
+        viewModel.userLevel = UserLevel(rawValue: userLevels[row])!
     }
 }
